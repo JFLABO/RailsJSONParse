@@ -1,0 +1,31 @@
+<%
+require "json"
+File.open("data/gnavi.json") do |j|
+  hash = JSON.load(j)
+end
+  %>
+<% hash %>
+      <%
+        #JSONを読む　ループ表示　結果表示
+        require "json"
+        File.open("data/gnavi.json") do |j|
+        @d = JSON.load(j)
+        end
+        %>
+      <PRE>
+      <%
+        @JSON=JSON.pretty_generate(@d)
+        hash = JSON.parse(@JSON)
+        %>
+      <% @JSON %>
+      <% hash %>
+      <% @arr=hash["rest"] %>
+      <% p @arr
+        p "<BR>" %>
+      </PRE>
+      <% @arr.each do |ss|%>
+      <%= p ss["name"] %>
+      <BR>
+      <%= p ss["pr"] %>
+      <BR>
+      <% end %>
